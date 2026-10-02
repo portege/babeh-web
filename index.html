@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boyke Dian Triwahyudhi — SRE, DevOps & Edge AI Builder</title>
+  <meta name="description"
+    content="Personal space of Boyke Dian Triwahyudhi (Babeh). SRE, DevOps, and builder obsessed with simple architecture, relentless automation, and running AI models on Raspberry Pi 5.">
+  <meta name="keywords"
+    content="Boyke Dian Triwahyudhi, Babeh, SRE, DevOps, Linux, Raspberry Pi 5, Edge AI, ONIDIA, KAMA, BOI, Automation">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+  <!-- Background Interactive Neural Mesh Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-light-orb orb-1"></div>
+  <div class="ambient-light-orb orb-2"></div>
+  <div class="ambient-light-orb orb-3"></div>
+
+  <!-- Dynamic Cursor Spotlight -->
+  <div class="cursor-spotlight"></div>
+
+  <!-- ==========================================================================
+       SITE HEADER / FROSTED NAVIGATION (Apple Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Boyke Dian Triwahyudhi Home">
+        <span class="brand-dot"></span>
+        <span class="brand-title">boyke::triwahyudhi</span>
+        <span class="brand-tag">babeh.com</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li>
+          <a href="https://tools.babeh.com" target="_blank" rel="noopener noreferrer" class="nav-link nav-tools">
+            <span>Tools</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#contact" class="nav-link nav-cta">Say Hi</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="https://www.linkedin.com/in/boykediantriwahyudhi" target="_blank" rel="noopener noreferrer"
+          class="nav-link btn-linkedin"
+          style="padding: 6px 12px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
+          <span>LinkedIn</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        <button id="sound-toggle-btn" class="nav-link"
+          style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); padding: 6px 10px; cursor: pointer; border-radius: var(--radius-full); font-size: 0.8rem;"
+          title="Toggle Acoustic Feedback">
+          🔊
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobile-drawer">
+          <span class="mobile-menu-bar"></span>
+          <span class="mobile-menu-bar"></span>
+          <span class="mobile-menu-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER (revealed by .mobile-menu-btn at <= 768px)
+       ========================================================================== -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="#about" class="mobile-drawer-link">About</a>
+    <a href="#projects" class="mobile-drawer-link">Projects</a>
+    <a href="#experience" class="mobile-drawer-link">Experience</a>
+    <a href="https://tools.babeh.com" target="_blank" rel="noopener noreferrer" class="mobile-drawer-link">
+      <span>Tools</span>
+      <span class="mobile-drawer-ext" aria-hidden="true">&#8599;</span>
+    </a>
+    <a href="#contact" class="mobile-drawer-link mobile-drawer-cta">Say Hi</a>
+
+    <div class="mobile-drawer-foot">
+      <a href="https://www.linkedin.com/in/boykediantriwahyudhi" target="_blank" rel="noopener noreferrer"
+        class="mobile-drawer-social">LinkedIn &#8599;</a>
+      <a href="https://medium.com/@boi_21419" target="_blank" rel="noopener noreferrer"
+        class="mobile-drawer-social">Medium &#8599;</a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="main-content">
+
+    <!-- HERO SECTION (Casual Martian Style with Babeh Introduction) -->
+    <section id="hero" class="hero-section">
+      <div class="hero-status-badge reveal-on-scroll">
+        <span class="status-dot-pulse"></span>
+        <span>Systems Nominal &bull; Building Edge AI on Raspberry Pi 5 &bull; Hates Doing Things Twice</span>
+      </div>
+
+      <h1 class="hero-title reveal-on-scroll stagger-1">
+        Hello Houston, <br /><span class="gradient-word">Boyke</span> Speaking.<br>
+      </h1>
+
+      <p class="hero-description reveal-on-scroll stagger-2">
+        To colleagues and engineers, I'm an SRE and systems builder. To my kids, I'm simply <strong>"Babeh"</strong>
+        (which is where <span style="color: var(--accent-cyan); font-family: var(--font-mono);">babeh.com</span> comes
+        from). Over the years, I've kept production alive across <strong>gaming, banking, online travel, news,
+          e-commerce, and mobile</strong> - navigating everything from chaotic early-stage startups to
+        massive enterprise infrastructure.
+      </p>
+      <h2 class="section-title">I automate the boring stuff and build things that just work.</h2>
+
+      <div class="hero-actions reveal-on-scroll stagger-3">
+        <a href="#projects" class="btn btn-primary">
+          <span>Check Out My Projects</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <span>Drop Me a Line</span>
+        </a>
+      </div>
+
+      <!-- Live Martian-style Telemetry Bar -->
+      <div class="hero-telemetry reveal-on-scroll stagger-4">
+        <div class="telemetry-item">
+          <span class="telemetry-label">Industries Conquered</span>
+          <span class="telemetry-val highlight" data-counter="7" data-suffix=" Sectors" data-decimals="0">7
+            Sectors</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Manual Toil Tolerated</span>
+          <span class="telemetry-val emerald" data-counter="0" data-suffix="%" data-decimals="0">0%</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Pi 5 Edge AI Power</span>
+          <span class="telemetry-val" data-counter="12" data-suffix="W" data-decimals="0">12W</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Personal AI Tools</span>
+          <span class="telemetry-val emerald" data-counter="3" data-suffix=" Active" data-decimals="0">3 Active</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION (Casual, Relatable, The Martian Tone)
+         ========================================================================== -->
+    <section id="about" class="section">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill">01 // ABOUT BOYKE (BABEH)</div>
+        <h2 class="section-title">"I'm Going to Have to Automate the Heck Out of This."</h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Visual Column: Approachable Tech Portrait -->
+        <div class="about-visual reveal-on-scroll stagger-1">
+          <div class="profile-card-wrapper">
+            <div class="profile-image-container">
+              <img src="me-pic-bw-bg.jpeg" alt="Boyke Dian Triwahyudhi - SRE, DevOps & Edge AI Builder"
+                class="profile-img" loading="lazy">
+              <div class="profile-overlay-gradient"></div>
+
+              <div class="profile-floating-badge">
+                <span style="color: var(--accent-cyan); font-weight: bold;">⚡ BUILDER &amp; AUTOMATOR</span>
+                <span>Indonesia &bull; Remote</span>
+              </div>
+
+              <div class="profile-card-info">
+                <div class="profile-name">Boyke Dian Triwahyudhi</div>
+                <div class="profile-role">
+                  <span>"Babeh" &bull; Software Engineer &bull; Sysadmin &bull; DevOps &bull; SRE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Column: The Story -->
+        <div class="about-details reveal-on-scroll stagger-2">
+          <p class="about-lead">
+            Look, here’s the unvarnished truth: I didn’t get into Linux systems and SRE because I love waking up to
+            alarms at 3 AM. <span>I got into it because I am fundamentally obsessed with building simple, reliable
+              things that run without babysitting.</span> (And when my kids call me <strong>Babeh</strong>, I'd rather
+            be hanging out with them than debugging a broken container rollout.)
+          </p>
+
+          <div class="martian-quote">
+            "If a human has to run a 14-step checklist manually every Tuesday, a human will eventually make a mistake on
+            Tuesday. <strong>Automate it once, test the edge cases, and let the machines do the boring work.</strong>"
+          </div>
+
+          <div class="about-paragraphs">
+            <p>
+              My career has been a genuine tour of duty across wildly different industries—from early-stage startups
+              where you wear five different hats before lunch, all the way to high-stakes enterprise systems where a
+              three-minute outage makes the morning financial papers.
+            </p>
+            <p>
+              I've written the business logic as a <strong>Software Engineer</strong>, configured kernels and resolved
+              unholy network glitches as a <strong>Linux System Administrator</strong>, wired up continuous deployment
+              as a <strong>DevOps Engineer</strong>, and guarded error budgets as a <strong>Site Reliability Engineer
+                (SRE)</strong>.
+            </p>
+            <p>
+              When I'm off the clock, I build tools that scratch my own itch: local AI running on low-power hardware,
+              visual assistants that read my screen, and RAG pipelines that actually cite their sources instead of
+              hallucinating.
+            </p>
+          </div>
+
+          <!-- Industries Explored -->
+          <div>
+            <div
+              style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.05em;">
+              BATTLEGROUND INDUSTRIES (STARTUP TO ENTERPRISE)
+            </div>
+            <div class="industries-container">
+              <span class="industry-chip">Online Games</span>
+              <span class="industry-chip">Finance Industry</span>
+              <span class="industry-chip">OTA (Online Travel)</span>
+              <span class="industry-chip">E-Commerce &amp; Flash Sales</span>
+              <span class="industry-chip">Digital News &amp; Media</span>
+              <span class="industry-chip">Mobile Ecosystems</span>
+              <span class="industry-chip">Construction</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROJECTS SECTION (ONIDIA, KAMA, BOI) - Clean, Icon-Free, With Live Links
+         ========================================================================== -->
+    <section id="projects" class="section">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill">02 // PERSONAL WORKSHOP</div>
+        <h2 class="section-title">Exploratory Development & Prototypes</h2>
+        <p class="section-subtitle">
+          Personal tools designed to automate tedious workflows, mine knowledge, and run edge intelligence locally.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: ONIDIA -->
+        <article class="project-card tilt-card reveal-on-scroll">
+          <div class="project-card-inner">
+            <div class="project-media-col">
+              <div class="project-img-wrapper stage-wrap">
+                <canvas id="stage"></canvas>
+                <!-- Interactive HUD -->
+                <div class="project-floating-hud">
+                  <div class="hud-header">
+                    <span class="hud-title">ONIDIA Chibi Desktop Pet</span>
+                    <span class="hud-status">● Click to Boop</span>
+                  </div>
+                  <div class="hud-metric-row">
+                    <span>Routine</span>
+                    <span id="onidia-hud-state" style="color: var(--accent-cyan); font-weight: 700;">Idle
+                      (Neutral)</span>
+                  </div>
+                  <div class="hud-bar">
+                    <div class="hud-bar-fill" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div>
+                <div class="project-header-top">
+                  <span class="project-domain-tag">Visual Desktop AI Assistant</span>
+                  <span class="project-number">01</span>
+                </div>
+                <h3 class="project-title">ONIDIA: OmNIpresent DIgital Amigo</h3>
+                <p class="project-description">
+                  Onidia is a lightweight desktop companion written in pure Go using direct X11 bindings, rendering a
+                  chibi anime character that roams your screen with near-zero CPU usage and a minimal memory footprint.
+                  Beyond simple idling and physics-driven interactions like throwing or parachuting, she features
+                  dynamic facial expressions, animated activities, and interactive speech bubbles powered by a local
+                  named pipe.
+                </p>
+                <div class="project-highlights">
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>Core Capabilities:</strong> Supports 32-bit ARGB per-pixel transparency, sixteen
+                      expressive moods, interactive mouse controls (drag, fling, hop), customizable event overlays (such
+                      as confetti or Matrix rain), and actionable routines like skipping rope or playing guitar. </span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>Technical Footprint:</strong> Built with zero external C dependencies (cgo) or heavy
+                      GUI toolkits, requiring only Go 1.21+, an X11/XWayland display, and a compositing window
+                      manager.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Multimodal VLM</span>
+                  <span class="tech-tag">Screen OCR</span>
+                  <span class="tech-tag">Rust / Native Bridge</span>
+                  <span class="tech-tag">Cross-Platform UI</span>
+                  <span class="tech-tag">Local Privacy</span>
+                </div>
+                <div class="project-actions">
+                  <a href="https://onidia.babeh.com" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-card-action">
+                    <span>onidia.babeh.com</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <button class="btn btn-secondary btn-card-action" data-project-target="project1">
+                    <span>Inspect Architecture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: KAMA -->
+        <article class="project-card tilt-card reversed reveal-on-scroll">
+          <div class="project-card-inner">
+            <div class="project-media-col">
+              <div class="project-img-wrapper">
+                <img src="kama-preview-bg.jpg" alt="Developer reading code through glasses — KAMA knowledge mining in action"
+                  class="project-img" loading="lazy">
+                <div class="project-img-overlay"></div>
+                <!-- Interactive HUD -->
+                <div class="project-floating-hud">
+                  <div class="hud-header">
+                    <span class="hud-title">KAMA Knowledge Engine</span>
+                    <span class="hud-status">● Grounded RAG</span>
+                  </div>
+                  <div class="hud-metric-row">
+                    <span>Retrieval Roundtrip</span>
+                    <span style="color: #4ade80; font-weight: 700;">18ms (p95)</span>
+                  </div>
+                  <div class="hud-bar">
+                    <div class="hud-bar-fill" style="width: 95%; background: var(--gradient-emerald);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div>
+                <div class="project-header-top">
+                  <div class="project-header-top-left">
+                    <span class="project-domain-tag">RAG as a Service</span>
+                    <span class="release-soon-badge">
+                      <span class="pulse-dot-amber"></span>
+                      <span>Release Soon</span>
+                    </span>
+                  </div>
+                  <span class="project-number">02</span>
+                </div>
+                <h3 class="project-title">KAMA: Knowledge Augmented Mining Agent</h3>
+                <p class="project-description">
+                  Retrieval-Augmented Generation shouldn't require glueing together twelve messy libraries. KAMA is a
+                  turnkey, plug-and-play RAG-as-a-service engine. Drop in messy PDFs, Notion dumps, Git repos, or
+                  technical docs—it handles chunking, hybrid dense/sparse vector indexing, and spits out grounded
+                  answers with exact source page citations instead of making stuff up.
+                </p>
+                <div class="project-highlights">
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>Hybrid Search:</strong> Combines dense semantic embeddings with sparse BM25 keyword
+                      matching and cross-encoder reranking.</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>Strict Grounding:</strong> Rejects prompts where documents don't have evidence,
+                      achieving a verified 99.4% citation accuracy.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">RAG Engine</span>
+                  <span class="tech-tag">Vector DB</span>
+                  <span class="tech-tag">Hybrid Search</span>
+                  <span class="tech-tag">FastAPI</span>
+                  <span class="tech-tag">Citation Guard</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn btn-primary btn-card-action btn-disabled" disabled
+                    aria-disabled="true" title="kama.babeh.com is not live yet — coming soon">
+                    <span>kama.babeh.com &mdash; Release Soon</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </button>
+                  <button class="btn btn-secondary btn-card-action" data-project-target="project2">
+                    <span>Inspect Architecture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: BOI -->
+        <article class="project-card tilt-card reveal-on-scroll">
+          <div class="project-card-inner">
+            <div class="project-media-col">
+              <div class="project-img-wrapper">
+                <img src="boi-preview-bg.jpg" alt="Illuminated circuit board close-up — BOI edge AI hardware running locally"
+                  class="project-img" loading="lazy">
+                <div class="project-img-overlay"></div>
+                <!-- Interactive HUD -->
+                <div class="project-floating-hud">
+                  <div class="hud-header">
+                    <span class="hud-title">Raspberry Pi 5 + AI HAT+ 2</span>
+                    <span class="hud-status">● Desk Node Online</span>
+                  </div>
+                  <div class="hud-metric-row">
+                    <span>Power / Cloud Dependency</span>
+                    <span style="color: var(--accent-cyan); font-weight: 700;">12W / 0% Cloud</span>
+                  </div>
+                  <div class="hud-bar">
+                    <div class="hud-bar-fill" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div>
+                <div class="project-header-top">
+                  <div class="project-header-top-left">
+                    <span class="project-domain-tag">Edge AI Hardware Suite</span>
+                    <span class="release-soon-badge">
+                      <span class="pulse-dot-amber"></span>
+                      <span>Release Soon</span>
+                    </span>
+                  </div>
+                  <span class="project-number">03</span>
+                </div>
+                <h3 class="project-title">BOI: Edge AI Suite on Raspberry Pi 5</h3>
+                <p class="project-description">
+                  Why pay recurring cloud subscription bills when you have a 25-watt credit-card computer on your desk?
+                  BOI is a curated collection of self-hosted AI tools tuned specifically for the <strong>Raspberry Pi 5
+                    with the AI HAT+ 2 (Hailo NPU)</strong>. It runs local object detection, fast speech-to-text, and
+                  small language models at the edge with zero external cloud dependencies.
+                </p>
+                <div class="project-highlights">
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>NPU Hardware Acceleration:</strong> Leverages Hailo-8 M.2 acceleration via PCIe Gen 3
+                      for real-time vision without throttling the CPU.</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-bullet">&rsaquo;</span>
+                    <span><strong>Air-Gapped Privacy:</strong> Fully functional offline. No internet, no subscriptions,
+                      no tracking telemetry.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Raspberry Pi 5</span>
+                  <span class="tech-tag">AI HAT+ 2 (Hailo)</span>
+                  <span class="tech-tag">Edge Computing</span>
+                  <span class="tech-tag">Local Whisper STT</span>
+                  <span class="tech-tag">Zero Cloud</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn btn-primary btn-card-action btn-disabled" disabled
+                    aria-disabled="true" title="boi.babeh.com is not live yet — coming soon">
+                    <span>boi.babeh.com &mdash; Release Soon</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </button>
+                  <button class="btn btn-secondary btn-card-action" data-project-target="project3">
+                    <span>Inspect Architecture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROFESSIONAL EXPERIENCE SECTION (Career Journey: Startup to Enterprise)
+         ========================================================================== -->
+    <section id="experience" class="section">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill">03 // TOUR OF DUTY</div>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">
+          From fast-paced early startups to mission-critical enterprise scale. Here's how I earned my scars.
+        </p>
+      </div>
+
+      <div class="experience-wrapper">
+        <div class="timeline-track"></div>
+
+        <div class="timeline-items">
+
+          <!-- Role 1: Site Reliability Engineer -->
+          <div class="timeline-item reveal-on-scroll">
+            <div class="timeline-node">
+              <div class="timeline-node-inner"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Site Reliability Engineer (SRE)</h3>
+                  <div class="timeline-company">Enterprise Platforms &amp; Multi-Region Scale</div>
+                </div>
+                <div class="timeline-period-badge">Reliability &bull; Automation</div>
+              </div>
+              <p class="timeline-summary">
+                Enforcing reliability where downtime translates directly to financial loss. Focusing on eliminating
+                manual toil, codifying SLOs/SLIs, and building automated self-healing mechanisms.
+              </p>
+              <div class="timeline-achievements">
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Banking &amp; FinTech:</strong> Kept mission-critical transaction gateways rock-solid
+                    with zero tolerance for downtime or ledger drift.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Error Budget Gatekeeping:</strong> Replaced emotional release arguments with concrete
+                    error budget policies tied directly to automated deployment rollbacks.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Chaos Engineering:</strong> Regularly ran planned failure drills to prove systems
+                    survive unexpected network cuts and node crashes without human intervention.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 2: DevOps Engineer -->
+          <div class="timeline-item reveal-on-scroll stagger-1">
+            <div class="timeline-node">
+              <div class="timeline-node-inner"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">DevOps Engineer</h3>
+                  <div class="timeline-company">High-Growth Startups &amp; Scaleups</div>
+                </div>
+                <div class="timeline-period-badge">CI/CD &bull; Cloud Infrastructure</div>
+              </div>
+              <p class="timeline-summary">
+                Bridging the gap between developers shipping features and operations keeping servers upright. Automating
+                cloud provisioning, container orchestration, and continuous delivery.
+              </p>
+              <div class="timeline-achievements">
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>E-Commerce &amp; Flash Sales:</strong> Designed dynamic autoscaling clusters that
+                    survived massive traffic tidal waves during midnight shopping festivals.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>OTA &amp; Travel Tech:</strong> Streamlined distributed microservices dealing with
+                    high-frequency ticket queries and inventory locking mechanisms.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Zero-Toil CI/CD:</strong> Built reproducible pipelines using Docker and Kubernetes,
+                    turning scary multi-hour deployments into boring 5-minute background jobs.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 3: Linux System Administrator -->
+          <div class="timeline-item reveal-on-scroll stagger-2">
+            <div class="timeline-node">
+              <div class="timeline-node-inner"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Linux System Administrator</h3>
+                  <div class="timeline-company">Bare Metal, Datacenters &amp; Telecom Networks</div>
+                </div>
+                <div class="timeline-period-badge">OS Kernels &bull; Networking &bull; Storage</div>
+              </div>
+              <p class="timeline-summary">
+                Digging into the metal. Managing Linux servers, kernel tuning, network routing, firewalls, and disaster
+                recovery across physical racks and virtual fleets.
+              </p>
+              <div class="timeline-achievements">
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Digital News &amp; Media:</strong> Managed high-availability web backends that withstood
+                    breaking news spikes without buckling under read load.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Hardening &amp; Storage:</strong> Hardened Linux kernels, tuned TCP network buffers, and
+                    automated ZFS/RAID disaster recovery snapshots.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Construction &amp; Field IoT:</strong> Deployed rugged server nodes with intermittent
+                    connectivity and real-world environmental constraints.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 4: Software Engineer -->
+          <div class="timeline-item reveal-on-scroll stagger-3">
+            <div class="timeline-node">
+              <div class="timeline-node-inner"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Software Engineer</h3>
+                  <div class="timeline-company">Mobile Apps, Web Services &amp; Gaming</div>
+                </div>
+                <div class="timeline-period-badge">Code &bull; APIs &bull; Architecture</div>
+              </div>
+              <p class="timeline-summary">
+                Where it all started: writing backend APIs, designing relational and key-value schemas, and
+                understanding the pain points of the developer on the other side of the screen.
+              </p>
+              <div class="timeline-achievements">
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Gaming &amp; Multiplayer:</strong> Engineered low-latency synchronization backends and
+                    session management for multiplayer gaming titles.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Mobile App Backends:</strong> Built RESTful APIs and real-time push notification
+                    pipelines handling millions of connected mobile clients.</span>
+                </div>
+                <div class="achievement-row">
+                  <span class="achievement-dot">&bull;</span>
+                  <span><strong>Developer Empathy:</strong> Because I wrote code before managing servers, I build
+                    platforms that developers actually enjoy deploying to.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Callout to full LinkedIn Profile -->
+        <div style="text-align: center; margin-top: 48px;" class="reveal-on-scroll">
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">
+            Want the full chronological company-by-company breakdown and endorsements?
+          </p>
+          <a href="https://www.linkedin.com/in/boykediantriwahyudhi" target="_blank" rel="noopener noreferrer"
+            class="btn btn-secondary btn-linkedin" style="display: inline-flex; align-items: center; gap: 8px;">
+            <span>View Complete History on LinkedIn</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT ME SECTION (Martian Casual Style)
+         ========================================================================== -->
+    <section id="contact" class="section">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill">04 // SAY HELLO</div>
+        <h2 class="section-title">Open Comms Channel</h2>
+        <p class="section-subtitle">
+          Got a tricky automation challenge, want to geek out over Raspberry Pi 5 AI, or just want to swap production
+          outage stories?
+        </p>
+      </div>
+
+      <div class="contact-container">
+        <!-- Left: Quick Direct Channels -->
+        <div class="contact-info-col reveal-on-scroll stagger-1">
+          <div class="contact-headline">
+            Let's build something simple, fast, and automated.
+          </div>
+          <p class="contact-bio">
+            Whether you want to talk about running local AI on edge devices, setting up zero-to-toil SRE pipelines, or
+            collaborating on open-source tools—my inbox is open.
+          </p>
+
+          <div class="contact-meta-cards">
+            <div class="meta-card">
+              <div class="meta-icon">📝</div>
+              <div class="meta-text-group">
+                <span class="meta-label">Writing On Medium</span>
+                <a href="https://medium.com/@boi_21419" target="_blank" rel="noopener noreferrer"
+                  class="meta-val" style="color: var(--accent-cyan);">
+                  @boi_21419 &nearr;
+                </a>
+              </div>
+            </div>
+
+            <div class="meta-card">
+              <div class="meta-icon">💼</div>
+              <div class="meta-text-group">
+                <span class="meta-label">LinkedIn Profile</span>
+                <a href="https://www.linkedin.com/in/boykediantriwahyudhi" target="_blank" rel="noopener noreferrer"
+                  class="meta-val" style="color: var(--accent-cyan);">
+                  in/boykediantriwahyudhi &nearr;
+                </a>
+              </div>
+            </div>
+
+            <div class="meta-card">
+              <div class="meta-icon">🛠️</div>
+              <div class="meta-text-group">
+                <span class="meta-label">Primary Philosophy</span>
+                <span class="meta-val">Automate early. Keep it simple. Sleep soundly.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Simple Form -->
+        <div class="contact-form-card reveal-on-scroll stagger-2">
+          <!-- Formspree endpoint. The real action/method keep the form working with
+               JavaScript disabled; script.js intercepts it with fetch() to drive the
+               button + toast states without reloading the page. -->
+          <form id="contact-form" action="https://formspree.io/f/mgavjbre" method="POST" novalidate>
+            <!-- Honeypot: invisible to people, auto-discarded by Formspree when left empty. -->
+            <div class="form-honeypot" aria-hidden="true">
+              <label for="form-gotcha">Leave this field empty</label>
+              <input type="text" id="form-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Formspree magic fields: inbox subject line + reply-to routing. -->
+            <input type="hidden" name="_subject" id="form-subject-line" value="New transmission via babeh.com">
+            <input type="hidden" name="_replyto" id="form-replyto" value="">
+
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-name" class="form-label">WHAT SHOULD I CALL YOU? *</label>
+                  <input type="text" id="form-name" name="name" class="form-input" placeholder="e.g. Mark Watney"
+                    autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-email" class="form-label">YOUR EMAIL ADDRESS *</label>
+                  <input type="email" id="form-email" name="email" class="form-input" placeholder="watney@ares3.space"
+                    autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">WHAT'S ON YOUR MIND?</label>
+                <select id="form-subject" name="topic" class="form-select">
+                  <option value="edge-ai">Edge AI &amp; Raspberry Pi 5 (BOI Project)</option>
+                  <option value="rag-kama">RAG as a Service (KAMA Project)</option>
+                  <option value="desktop-onidia">Desktop AI Assistant (ONIDIA Project)</option>
+                  <option value="sre-devops">SRE, DevOps &amp; Automation Architecture</option>
+                  <option value="casual-chat">Just saying hi and geeking out</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">TRANSMISSION MESSAGE *</label>
+                <textarea id="form-message" name="message" class="form-textarea"
+                  placeholder="Tell me what you're building, what's giving you a headache, or what automation you want to see..."
+                  required></textarea>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn-submit">
+                <span>Send Transmission 🚀</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span>&copy; 2026 Boyke Dian Triwahyudhi (Babeh). Crafted with simplicity &amp; zero bloated
+          dependencies.</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/boykediantriwahyudhi" target="_blank" rel="noopener noreferrer"
+          class="footer-social-link" title="LinkedIn">
+          LinkedIn
+        </a>
+        <span>&bull;</span>
+        <a href="#hero" class="footer-social-link" title="Back to Top">
+          Back to Top &uarr;
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       INTERACTIVE PROJECT INSPECTION MODAL (Apple Keynote Style)
+       ========================================================================== -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Project Name</h3>
+        <div class="modal-meta" id="modal-meta">System Tagline</div>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" data-tab="overview">Project Overview</button>
+        <button class="modal-tab-btn" data-tab="architecture">System Architecture</button>
+        <button class="modal-tab-btn" data-tab="telemetry">Live Telemetry &amp; Stats</button>
+        <button class="modal-tab-btn" data-tab="code">Core Automation Code</button>
+      </div>
+
+      <div id="modal-dynamic-content">
+        <!-- Injected dynamically via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       APPLE-STYLE NOTIFICATION TOAST
+       ========================================================================== -->
+  <div class="form-toast" id="form-toast" role="status" aria-live="polite">
+    <div class="toast-icon">🚀</div>
+    <div class="toast-text" id="toast-message">Transmission received! I'll ping you back soon.</div>
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script src="script.js"></script>
+  <script src="onidia-character.js"></script>
+</body>
+
+</html>
